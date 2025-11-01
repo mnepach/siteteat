@@ -45,6 +45,40 @@
         }
     }
 
+    @layer utilities {
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        @media (min-width: 768px) {
+            .container-desktop {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 2rem;
+            }
+            
+            .image-desktop {
+                height: 400px;
+                object-fit: cover;
+            }
+            
+            .image-desktop-small {
+                height: 300px;
+                object-fit: cover;
+            }
+            
+            .grid-desktop-2 {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+            
+            .grid-desktop-3 {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+        }
+    }
+
     @layer components {
         .btn-primary {
             @apply bg-[var(--primary-color)] text-white px-6 py-3 rounded-2xl font-medium transition-all duration-300 hover:shadow-lg active:scale-95 text-center block w-full;

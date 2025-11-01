@@ -28,32 +28,32 @@ function Varieties() {
     ];
 
     return (
-      <section className="px-4 py-8" data-name="varieties" data-file="components/Varieties.js">
+      <section className="px-4 py-8 max-w-7xl mx-auto" data-name="varieties" data-file="components/Varieties.js">
         <div className="text-center mb-6">
-          <h2 className="text-xl font-bold text-[var(--text-dark)] mb-2">
+          <h2 className="text-xl md:text-3xl font-bold text-[var(--text-dark)] mb-2">
             СОРТА:
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 max-w-6xl mx-auto">
           {varieties.map((variety, index) => (
             <div key={index} className="text-center">
-              <div className="w-20 h-20 rounded-xl overflow-hidden mx-auto mb-2">
+              <div className="w-20 h-20 md:w-32 md:h-32 rounded-xl overflow-hidden mx-auto mb-2 md:mb-3 shadow-md">
                 <img 
                   src={variety.image} 
                   alt="Смородина"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <p className="text-[var(--text-dark)] text-xs leading-relaxed font-medium px-1">
+              <p className="text-[var(--text-dark)] text-xs md:text-sm leading-relaxed font-medium px-1">
                 {variety.name}
               </p>
             </div>
           ))}
         </div>
 
-        <div className="text-center mt-6">
-          <a href="#order" className="btn-primary max-w-xs mx-auto">
+        <div className="text-center mt-6 md:mt-10">
+          <a href="#order" className="btn-primary max-w-xs md:max-w-md mx-auto text-sm md:text-base py-3 md:py-4">
             Оформить заказ
           </a>
         </div>
