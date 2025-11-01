@@ -98,13 +98,12 @@ if (isset($_POST['name']) && isset($_POST['phone'])) {
         $txt .= "<b>".$key."</b> ".$value."%0A";
     }
 
-    $sendToTelegram = @fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$txt}", "r");
+    @fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$txt}", "r");
 
-    if ($sendToTelegram) {
-        header('Location: good.html');
-        exit();
-    } else {
-        echo json_encode(['success' => false, 'error' => 'Telegram error']);
-    }
+    echo json_encode(['success' => true]);
+    exit();
+} else {
+    echo json_encode(['success' => false, 'error' => 'Missing required fields']);
+    exit();
 }
 ?>
