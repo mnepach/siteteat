@@ -28,7 +28,18 @@ function Footer() {
             </div>
           </div>
 
-          <div className="border-t border-gray-700 pt-4">
+          <div className="border-t border-gray-700 pt-4 pb-4">
+            <div className="flex flex-col space-y-2 text-sm mb-4">
+              <a href="politics.html" className="text-gray-300 hover:text-[var(--accent-color)] transition-colors">
+                Политика конфиденциальности
+              </a>
+              <a href="oferta.html" className="text-gray-300 hover:text-[var(--accent-color)] transition-colors">
+                Публичная оферта
+              </a>
+              <a href="obmen_vozvrat.html" className="text-gray-300 hover:text-[var(--accent-color)] transition-colors">
+                Обмен и возврат товара
+              </a>
+            </div>
             <p className="text-sm opacity-75">
               © 2025 GreenGarden. Все права защищены.
             </p>

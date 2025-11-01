@@ -9,5 +9,4 @@ return [
     'phoneField' => 'phone_1',
     'itemId' => 11,
     'offerId' => 1
-    'priceItem' => 17.99
 ];

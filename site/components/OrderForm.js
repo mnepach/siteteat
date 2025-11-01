@@ -53,6 +53,7 @@ function OrderForm() {
   try {
     return (
       <section id="order" className="px-4 py-12 bg-[var(--secondary-color)] relative" data-name="order-form" data-file="components/OrderForm.js">
+        {/* Модальное окно ошибки */}
         {showError && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50 animate-fadeIn">
             <div className="bg-white rounded-3xl p-6 max-w-sm w-full shadow-2xl transform animate-scaleIn">
@@ -170,8 +171,15 @@ function OrderForm() {
             )}
           </button>
 
-          <p className="text-xs text-[var(--text-light)] text-center">
-            Нажимая кнопку, вы соглашаетесь с обработкой персональных данных
+          <p className="text-xs text-[var(--text-light)] text-center leading-relaxed">
+            Нажимая кнопку, вы соглашаетесь с{' '}
+            <a href="politics.html" className="text-blue-500 hover:text-blue-600 underline">
+              политикой конфиденциальности
+            </a>
+            {' '}и{' '}
+            <a href="oferta.html" className="text-blue-500 hover:text-blue-600 underline">
+              пользовательским соглашением
+            </a>
           </p>
         </form>
 
