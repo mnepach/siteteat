@@ -4,12 +4,12 @@ spl_autoload_register('autoload');
 
 function autoload($name)
 {
-    include_once DIR . '/' . $name . '.php';
+    include_once __DIR__ . '/' . $name . '.php';
 }
 
 set_time_limit(0);
 
-$config = include_once DIR . "/SRconfig.php";
+$config = include_once __DIR__ . "/SRconfig.php";
 
 header("Content-Type: application/json; charset=utf-8");
 
@@ -57,7 +57,6 @@ if (isset($_POST['name']) && isset($_POST['phone'])) {
 
         $pricePerItem = $config['priceItem'];
         if ($quantity >= 3) {
-            // Акция 3+1: цена за 3 шт
             $pricePerItem = ($config['priceItem'] * 3) / 4;
         }
         
@@ -101,12 +100,9 @@ if (isset($_POST['name']) && isset($_POST['phone'])) {
 
     $sendToTelegram = @fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$txt}", "r");
 
-    if ($sendToTelegram) {
-        fclose($sendToTelegram);
-        echo json_encode(['success' => true, 'message' => 'Заказ успешно оформлен']);
+    if ($sendToTelegram ) {
+        header('Location: good.html');
     } else {
-        echo json_encode(['success' => false, 'message' => 'Ошибка отправки']);
+        echo "Error";
     }
-} else {
-    echo json_encode(['success' => false, 'message' => 'Не все поля заполнены']);
 }
