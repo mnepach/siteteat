@@ -60,20 +60,20 @@ if (isset($_POST['name']) && isset($_POST['phone'])) {
             $pricePerItem = ($config['priceItem'] * 3) / 4;
         }
         
-        $price = (int)round($pricePerItem * 100); // Цена в копейках
+        $price = (int)round($pricePerItem * 100); 
         $vars['input']['cart']['items'][0]['price'] = $price;
     }
-
 
     $result = $srApi->sendRequest($query, $vars);
 
     FileLogger::recordsLogs("responseLog.txt", "Request: " . $srApi->jsonEncode($vars));
     FileLogger::recordsLogs("responseLog.txt", "Response: " . $result);
 
+    // Telegram
     $name = htmlspecialchars($_POST['name']);
     $phone = htmlspecialchars($_POST['phone']);
     $quantity = htmlspecialchars($_POST['quantity'] ?? '1');
-    $product = 'Саженцы смородины';
+    $product = 'Рододендрон';
     
     $totalPrice = $config['priceItem'] * (int)$quantity;
     if ((int)$quantity >= 3) {
@@ -100,9 +100,11 @@ if (isset($_POST['name']) && isset($_POST['phone'])) {
 
     $sendToTelegram = @fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$txt}", "r");
 
-    if ($sendToTelegram ) {
+    if ($sendToTelegram) {
         header('Location: good.html');
+        exit();
     } else {
-        echo "Error";
+        echo json_encode(['success' => false, 'error' => 'Telegram error']);
     }
 }
+?>
